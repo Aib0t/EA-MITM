@@ -39,7 +39,7 @@
     <ProjectGuid>{7E58E7CD-D43F-4368-842A-218B5FA3FC5E}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>MinHook</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
