@@ -37,6 +37,9 @@ jobs:
 #     - name: Restore NuGet packages
 #       working-directory: ${{env.GITHUB_WORKSPACE}}
 #       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+
+    - name: Setup Windows SDK
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
       
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
