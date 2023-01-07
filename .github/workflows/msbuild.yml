@@ -40,15 +40,11 @@ jobs:
       working-directory: ${{env.GITHUB_WORKSPACE}}
       # Add additional options to the MSBuild command line here (like platform or verbosity level).
       # See https://docs.microsoft.com/visualstudio/msbuild/msbuild-command-line-reference
-      run: |
-           msbuild /m /p:Configuration=Release /property:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
-           msbuild /m /p:Configuration=Debug /property:Platform=x64 ${{env.SOLUTION_FILE_PATH}}
-           msbuild /m /p:Configuration=Release /property:Platform=x86 ${{env.SOLUTION_FILE_PATH}}
-           msbuild /m /p:Configuration=Debug /property:Platform=x86 ${{env.SOLUTION_FILE_PATH}}
+      run: msbuild /m /p:Configuration=${{ matrix.target }} /property:Platform=${{ matrix.platform }} ${{env.SOLUTION_FILE_PATH}}
         
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.2
       with:
         # Artifact name
-        name: ea-mitm
+        name: ea-mitm_${{ matrix.target }}_${{ matrix.platform }}
         path: ./
