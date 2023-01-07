@@ -22,8 +22,8 @@ jobs:
   build:  
     strategy:
       matrix:
-        target: [Release, Debug]
-        platform: [x64, x86]
+        target: [Release] #, Debug]
+        platform: [x86] #, x64]
     runs-on: windows-latest
 
     steps:
@@ -31,13 +31,12 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-
+      with:
+        vs-version: 16.4
+        
 #     - name: Restore NuGet packages
 #       working-directory: ${{env.GITHUB_WORKSPACE}}
 #       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
-
-    - name: Add Windows 8.1 SDK
-      run: sdksetup.exe /features OptionId.WindowsDesktopSoftwareDevelopmentKit OptionId.NetFxSoftwareDevelopmentKit /quiet
       
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
