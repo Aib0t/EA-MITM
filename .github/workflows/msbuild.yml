@@ -22,8 +22,8 @@ jobs:
   build:  
     strategy:
       matrix:
-        target: [Release] #, Debug]
-        platform: [x86] #, x64]
+        target: [Release, Debug]
+        platform: [x86, x64]
     runs-on: windows-latest
 
     steps:
@@ -31,16 +31,6 @@ jobs:
 
     - name: Add MSBuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
-#      with:
-#        vs-version: 19.0
-
-        
-#     - name: Restore NuGet packages
-#       working-directory: ${{env.GITHUB_WORKSPACE}}
-#       run: nuget restore ${{env.SOLUTION_FILE_PATH}}
-
-    #- name: Setup Windows SDK
-      #uses: GuillaumeFalourd/setup-windows10-sdk-action@v1.11
       
     - name: Build
       working-directory: ${{env.GITHUB_WORKSPACE}}
@@ -52,5 +42,5 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         # Artifact name
-        name: ea-mitm_${{ matrix.target }}_${{ matrix.platform }}
-        path: ./
+        name: ea-mitm_${{ matrix.platform }}_${{ matrix.target }}
+        path: ./out
